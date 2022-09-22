@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Đăng nhập</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/admin/plugins/fontawesome-free/css/all.min.css">
+  <!-- icheck bootstrap -->
+  <link href="/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/admin/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="/index"><b>Book awesome</b></a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+        <p class="login-box-msg">Đăng nhập</p>
+
+      <!-- <form action="/index3" method="post"> -->
+        <div class="input-group mb-3">
+          <input type="text" class="form-control username" placeholder="Tài khoản">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control password" placeholder="Mật khẩu">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- /.col -->
+          <div class="col-12">
+            <button type="submit" onclick="signin()" class="btn btn-primary btn-block">Đăng nhập</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      <!-- </form> -->
+
+      <p class="mb-1" style="margin-top: 24px;">
+        <a href="/forgotPass">Quên mật khẩu?</a>
+      </p>
+      <p class="mb-0">
+        <a href="/register" class="text-center">Đăng ký thành viên mới</a>
+      </p>
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="/admin/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/admin/dist/js/adminlte.min.js"></script>
+<script src="/cookie.js"></script>
+<script>
+  
+  function signin(){
+    deleteCookie();
+    let username = document.querySelector(".username");
+    let password = document.querySelector(".password");
+    console.log(""+username.value + "-" + password.value);
+    let acc = {
+      "username" : username.value,
+      "password" : password.value
+    }
+    $.ajax({
+        headers : {
+          'Accept' : 'application/json',
+          'Content-Type' : 'application/json',
+          'Authorization' : "Bearer "+getCookie("token")
+        },
+        type : "POST",
+        url : "http://localhost:8081/signin",
+        data : JSON.stringify(acc),
+        success : function(jwt){
+          setCookie("token",jwt.token);
+          setCookie("username",jwt.username);
+          setCookie("role", jwt.roles);
+          let gt = document.cookie;
+          console.log(gt);
+          if (jwt.roles == "ROLE_USER"){
+            document.location.href = "http://localhost:8081/index";
+          }
+          else{
+            document.location.href = "http://localhost:8081/admin/adminInfo";
+          }
+        },
+        error : function(){
+          alert("Tài khoản hoặc mật khẩu không chính xác!");
+        }
+    })
+  }
+</script>
+</body>
+</html>

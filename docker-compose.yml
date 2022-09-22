@@ -1,0 +1,12 @@
+version: '3.3'
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: trimai
+      MYSQL_DATABASE: base
+      MYSQL_USER: trimai
+      MYSQL_PASSWORD: trimai
+    ports:
+      - '3008:3306'

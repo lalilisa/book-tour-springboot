@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Danh sách người dùng</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/admin/plugins/fontawesome-free/css/all.min.css">
+  <!-- jsGrid -->
+  <link rel="stylesheet" href="/admin/plugins/jsgrid/jsgrid.min.css">
+  <link rel="stylesheet" href="/admin/plugins/jsgrid/jsgrid-theme.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/admin/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/index" class="brand-link">
+      <img src="/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Book awesome</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="info">
+          <a href="/admin/adminInfo" class="d-block"><strong style="margin-right: 12px;">Admin:</strong>Alexander Pierce</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="/admin/statistic" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Thống kê
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Quản lý tài khoản
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/admin/user" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Người dùng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/admin" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Admin</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/adminInfo" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Cá nhân</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-suitcase"></i>
+              <p>
+                Quản lý Tour
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/admin/listTour" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách Tour</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/listBookTour" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Book Tour</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+
+      <p onclick="logout()" class="btn btn-block btn-warning" style="margin-top: 36px;">Đăng xuất</p>
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Danh sách người dùng</h1>
+            </div>
+            <div class="col-sm-6">
+              <div class="input-group">
+                <input type="search" class="form-control form-control-lg input-search" placeholder="Tìm kiếm">
+                <div onclick="searchuser()" class="input-group-append">
+                  <p class="btn btn-lg btn-default">
+                    <i class="fa fa-search"></i>
+                  </p>
+                </div>
+            </div>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+  
+      <!-- Main content -->
+      <section class="content">
+        <div class="card">
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div id="jsGrid1" class="jsgrid" style="position: relative; height: 100%; width: 100%;">
+              <div class="jsgrid-grid-header jsgrid-header-scrollbar">
+                <table class="jsgrid-table">
+                    <tr class="jsgrid-header-row">
+                        <th class="jsgrid-header-cell jsgrid-align-center" style="width: 30px;">Mã TK</th>
+                        <th class="jsgrid-header-cell jsgrid-align-center" style="width: 100px;">Tài khoản</th>
+                        <th class="jsgrid-header-cell jsgrid-align-center" style="width: 100px;">Họ tên</th>
+                        <th class="jsgrid-header-cell jsgrid-align-center" style="width: 100px;">Email</th>
+                        <th class="jsgrid-header-cell" style="width: 100px;"></th>
+                  </tr>
+                </table>
+              </div><div class="jsgrid-grid-body">
+                <table class="jsgrid-table">
+                  <tbody>
+                    <!-- js -->
+                  </tbody>
+                </table>
+                </div>
+                <!-- js -->
+              </div>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="/admin/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/admin/dist/js/adminlte.min.js"></script>
+<!-- jsGrid -->
+<script src="/admin/plugins/jsgrid/jsgrid.min.js"></script>
+<script src="/cookie.js"></script>
+
+<script>
+  window.onload = function(){
+    authenticate("ROLE_ADMIN","");
+    document.querySelector(".d-block").innerHTML = 
+      `<strong style="margin-right: 12px;">Admin:</strong>${getCookie("username")}`;
+    searchuser();
+  };
+
+  function searchuser(){
+    let key = document.querySelector(".input-search").value;
+    $.ajax({
+      headers : {
+          'Accept' : 'application/json',
+          'Content-Type' : 'application/json',
+          'Authorization' : "Bearer "+getCookie("token")
+        },
+      type : "GET",
+      url : "http://localhost:8081/data/secure/getusersbykey?key="+key,
+      success: function(result){
+        let content = ``;
+        result.forEach(element => {
+          content += `<tr class="jsgrid-row">
+                        <td class="jsgrid-cell" style="width: 30px;">${element.accId}</td>
+                        <td class="jsgrid-cell" style="width: 100px;">${element.userName}</td>
+                        <td class="jsgrid-cell" style="width: 100px;">${element.name?element.name:""}</td>
+                        <td class="jsgrid-cell" style="width: 100px;">${element.email}</td>
+                        <td class="jsgrid-cell" style="width: 100px;">
+                            <a class="btn btn-primary btn-sm" href="/admin/bookTourDetail?username=${element.userName}">
+                                <i class="fas fa-eye">
+                                </i>
+                                Tour đã đặt
+                            </a>
+                            <a class="btn btn-danger btn-sm" onclick = "deleteacc(${element.accId})">
+                                <i class="fas fa-trash">
+                                </i>
+                                Xóa tài khoản
+                            </a>
+                        </td>
+                    </tr>`;
+        });
+        document.querySelector(".jsgrid-grid-body .jsgrid-table tbody").innerHTML = content;
+      }
+    })
+  }
+
+  function deleteacc(id){
+    if (confirm("Xóa tài khoản?")){
+      $.ajax({
+        headers : {
+            'Accept' : 'application/json',
+            'Content-Type' : 'application/json',
+            'Authorization' : "Bearer "+getCookie("token")
+          },
+        type : "DELETE",
+        url : "http://localhost:8081/data/secure/deleteacc/"+id,
+        error: function(result){
+          alert(result.responseText);
+          document.querySelector(".input-search").value = "";
+          searchuser();
+        }
+      })
+    }
+  }
+</script>
+</body>
+</html>

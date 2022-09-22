@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sửa thông tin Tour</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/admin/plugins/fontawesome-free/css/all.min.css">
+  <!-- jsGrid -->
+  <link rel="stylesheet" href="/admin/plugins/jsgrid/jsgrid.min.css">
+  <link rel="stylesheet" href="/admin/plugins/jsgrid/jsgrid-theme.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/admin/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/index" class="brand-link">
+      <img src="/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Book awesome</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="info">
+          <a href="/admin/adminInfo" class="d-block"><strong style="margin-right: 12px;">Admin:</strong>Alexander Pierce</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="/admin/statistic" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Thống kê
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Quản lý tài khoản
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/admin/user" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Người dùng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/admin" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Admin</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/adminInfo" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Cá nhân</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-suitcase"></i>
+              <p>
+                Quản lý Tour
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/admin/listTour" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách Tour</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/listBookTour" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Book Tour</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+
+      <p onclick="logout()" class="btn btn-block btn-warning" style="margin-top: 36px;">Đăng xuất</p>
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>Sửa thông tin Tour</h1>
+              </div>
+            </div>
+          </div><!-- /.container-fluid -->
+        </section>
+    
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">Tour mới</h3>
+    
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="inputName">Tên Tour</label>
+                    <input type="text" id="inputName" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputDescription">Mô tả</label>
+                    <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputCost">Giá (VND)</label>
+                    <input type="text" id="inputCost" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputSale">Sale (%)</label>
+                    <input type="number" id="inputSale" class="form-control" min="0">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputDay">Số ngày</label>
+                    <input type="number" id="inputDay" class="form-control" min="0">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputClientCompany">Khu vực</label>
+                    <select id="inputStatus" class="form-control custom-select region-select">
+                      <option selected disabled value="0">Khu vực</option>
+                      <option value="Miền Bắc">Miền Bắc</option>
+                      <option value="Miền Trung">Miền Trung</option>
+                      <option value="Miền Nam">Miền Nam</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputLocationStart">Nơi khởi hành</label>
+                    <input type="text" id="inputLocationStart" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputCate">Loại Tour</label>
+                    <select id="inputStatus" class="form-control custom-select cate-select">
+                      <!-- js -->
+                    </select>
+                  </div>
+                  <div class="row" style="justify-content: space-between;">
+                    <div class="col-md-6" style="max-width: 49%;">
+          
+                      <div class="card card-danger">
+                        <div class="card-header row" style="align-items: center;">
+                            <div class="col-md-8"><h3 class="card-title">Ngày khởi hành</h3></div>
+                            <div class="col-md-4"><input type="number" placeholder="Chọn số lượng" class="input-number-dayStart" min="0" style="width: 100%;"></div>
+                        </div>
+                        <div class="card-body day-start">
+                          <!-- Date dd/mm/yyyy  297 editTour.html-->
+                          <!-- /.form group -->
+                        </div>
+                        <!-- /.card-body -->
+                      </div>
+                      <!-- /.card -->          
+                    </div>
+                    <!-- /.col (left) -->
+                    <div class="col-md-6" style="max-width: 49%;">
+                      <div class="card card-primary">
+                        <div class="card-header row" style="align-items: center;">
+                            <div class="col-md-8"><h3 class="card-title">Thêm ảnh Tour</h3></div>
+                            <div class="col-md-4"><input type="number" placeholder="Chọn số lượng" class="input-number-img" min="0" style="width: 100%;"></div>
+                        </div>
+                        <div class="card-body add-img-url">
+                          <!-- Date  297 editTour.html -->
+                          <!-- /.form group -->
+                      </div>
+                      <!-- /.card -->
+                    </div>
+                    <!-- /.col (right) -->
+                    </div>
+                    <div class="col-md-12">
+          
+                        <div class="card card-warning">
+                          <div class="card-header row" style="align-items: center;">
+                              <div class="col-md-8"><h3 class="card-title">Lộ trình</h3></div>
+                          </div>
+                          <div class="card-body add-act-day">
+                            <!-- Date dd/mm/yyyy 297 editTour.html-->
+                            <!-- /.form group -->
+                          </div>
+                          <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->          
+                      </div>
+                      <!-- /.col (left) -->
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12" style="margin-bottom: 48px;">
+                <input type="submit" onclick="update()" value="Cập nhật" class="btn btn-success" style="margin: 0 48px;">
+                <a onclick="cancel()" class="btn btn-secondary">Hủy thêm</a>
+            </div>
+          </div>
+        </section>
+        <!-- /.content -->
+      </div>
+    <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="/admin/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/admin/dist/js/adminlte.min.js"></script>
+<!-- jsGrid -->
+<script src="/admin/plugins/jsgrid/jsgrid.min.js"></script>
+<!-- InputMask -->
+<script src="/admin/plugins/moment/moment.min.js"></script>
+<script src="/admin/plugins/inputmask/jquery.inputmask.min.js"></script>
+<script src="/cookie.js"></script>
+<script>
+    $(function () {
+        //Datemask dd/mm/yyyy
+        $('#datemask').inputmask('dd-mm-yyyy', { 'placeholder': 'dd-mm-yyyy' })
+        //Datemask2 mm/dd/yyyy
+        $('#datemask2').inputmask('mm-dd-yyyy', { 'placeholder': 'mm-dd-yyyy' })
+        //Money Euro
+        $('[data-mask]').inputmask()
+    })
+</script>
+
+<script>
+  window.onload=function(){
+    authenticate("ROLE_ADMIN","");
+    document.querySelector(".d-block").innerHTML = 
+      `<strong style="margin-right: 12px;">Admin:</strong>${getCookie("username")}`;
+  };
+  var numOfDayStart = document.querySelector('.input-number-dayStart');
+  var numOfImg = document.querySelector('.input-number-img');
+  var numOfDay = document.querySelector('#inputDay');
+  numOfDayStart.addEventListener('change', function(){
+      var content=``;
+      for( var i=0 ; i<numOfDayStart.value ; i++){
+          content += `<div class="form-group">
+                          <label>Ngày ${i+1}:</label>
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                            </div>
+                            <input type="text" class="form-control day-start-input" data-inputmask-alias="datetime" data-inputmask-inputformat="dd-mm-yyyy" data-mask>
+                          </div>
+                          <!-- /.input group -->
+                      </div>`
+      }
+      document.querySelector(".day-start").innerHTML = content;
+      $('[data-mask]').inputmask()
+  })
+  numOfImg.addEventListener('change', function(){
+      var content=``;
+      for( var i=0 ; i<numOfImg.value ; i++){
+          content += `<div class="form-group">
+                          <label>Đường dẫn ảnh ${i+1}:</label>
+                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                              <input type="text" class="form-control form-control-border url-img-input" id="exampleInputImg" placeholder="Url">
+                            </div>
+                        </div>`
+      }
+      document.querySelector(".add-img-url").innerHTML = content;
+  })
+  numOfDay.addEventListener('change', function(){
+      var content=``;
+      for( var i=0 ; i<numOfDay.value ; i++){
+          content += `<div class="form-group">
+                            <label>Lịch trình ngày ${i+1}:</label>
+                            <div class="input-group">
+                              <input type="text" class="form-control title-input" id="exampleInputTitleDay" placeholder="Chủ đề" style="width: 100%; margin-bottom: 12px;">
+                              <textarea id="inputActDay" class="form-control act-input" rows="3" placeholder="Hoạt động trong ngày"></textarea>
+                            </div>
+                          </div>`
+      }
+      document.querySelector(".add-act-day").innerHTML = content;
+  });
+</script>
+
+<script>
+  function loadcate(id){
+    $.ajax({
+      headers : {
+          'Accept' : 'application/json',
+          'Content-Type' : 'application/json',
+          'Authorization' : "Bearer "+getCookie("token")
+        },
+      type : "GET",
+      url : "http://localhost:8081/data/category",
+      success: function(data){
+        let content = `<option disabled value="0">Loại Tour</option>`;
+        data.forEach(element => {
+          if (element.cateId!=1){
+            if (element.cateId==id){
+              content += `<option selected value="${element.cateId}">${element.cateName}</option>`;
+            }
+            else{
+              content += `<option value="${element.cateId}">${element.cateName}</option>`;
+            }
+          }
+        });
+        document.querySelector(".cate-select").innerHTML = content;
+      }
+    });
+  }
+
+  var curl = document.URL;
+  var id = curl.split('id=')[1];
+
+  $.ajax({
+    headers : {
+          'Accept' : 'application/json',
+          'Content-Type' : 'application/json',
+          'Authorization' : "Bearer "+getCookie("token")
+        },
+    type : "GET",
+    url : "http://localhost:8081/data/tour/"+id,
+    success: function(data){
+      document.querySelector("#inputName").value = data.tourName;
+      document.querySelector("#inputDescription").value = data.tourDescription;
+      document.querySelector("#inputCost").value = data.tourCost;
+      document.querySelector("#inputSale").value = data.sale;
+      document.querySelector("#inputDay").value = data.days;
+      document.querySelector("#inputLocationStart").value = data.startLoc;
+      document.querySelector(".input-number-dayStart").value = data.listDayStarts.length;
+      document.querySelector(".input-number-img").value = data.listimgs.length;
+      document.querySelector(".region-select").value = data.region;
+      loadcate(data.cateId);
+
+      document.querySelector('.input-number-dayStart').dispatchEvent(new Event('change'));
+      document.querySelector('.input-number-img').dispatchEvent(new Event('change'));
+      document.querySelector('#inputDay').dispatchEvent(new Event('change'));
+
+      let DSelements = document.querySelectorAll(".day-start-input");
+      for (let i=0 ; i<DSelements.length ; i++){
+        DSelements[i].value = dateConvert2(data.listDayStarts[i].dayStart);
+      }
+      let Ielements = document.querySelectorAll(".url-img-input");
+      for (let i=0 ; i<Ielements.length ; i++){
+        Ielements[i].value = data.listimgs[i].url;
+      }
+      let TAelements = document.querySelectorAll(".title-input");
+      let Aelements = document.querySelectorAll(".act-input");
+      for (let i=0 ; i<Aelements.length ; i++){
+        TAelements[i].value = data.listacts[i].title;
+        Aelements[i].value = data.listacts[i].act;
+      }
+    }
+  });
+
+  function dateConvert1(date){
+    var a = date.split("-");
+    a.reverse();
+    return a.join("-");
+  }
+
+  function dateConvert2(date){
+    date = date.slice(0,10);
+    var a = date.split("-");
+    a.reverse();
+    return a.join("-");
+  }
+
+  function cancel(){
+    window.location = 'http://localhost:8081/admin/tourDetail?id='+id;
+  }
+
+  function update(){
+    let srg = document.querySelector(".region-select");
+    let scg = document.querySelector(".cate-select");
+
+    let inputname = document.querySelector("#inputName").value;
+    let inputdescription = document.querySelector("#inputDescription").value;
+    let inputcost = document.querySelector("#inputCost").value;
+    let inputsale = document.querySelector("#inputSale").value;
+    let inputday = document.querySelector("#inputDay").value;
+    let inputlocationStart = document.querySelector("#inputLocationStart").value;
+    let regionselect = srg.options[srg.selectedIndex].value;
+    let cateselect = scg.options[scg.selectedIndex].value;
+
+    let listDS = [], listI = [], listA = [];
+    
+    let DSelements = document.querySelectorAll(".day-start-input");
+    for (let i=0 ; i<DSelements.length ; i++){
+      listDS.push({
+        "dayStart": dateConvert1(DSelements[i].value)
+      })
+    }
+    let Ielements = document.querySelectorAll(".url-img-input");
+    for (let i=0 ; i<Ielements.length ; i++){
+      listI.push({
+        "url": Ielements[i].value
+      })
+    }
+    let TAelements = document.querySelectorAll(".title-input");
+    let Aelements = document.querySelectorAll(".act-input");
+    for (let i=0 ; i<Aelements.length ; i++){
+      listA.push({
+        "day": i+1,
+        "title": TAelements[i].value,
+        "act": Aelements[i].value
+      })
+    }
+
+    let tour = {
+      "tourName": inputname,
+      "tourCost": inputcost,
+      "tourDescription": inputdescription,
+      "startLoc": inputlocationStart,
+      "sale": inputsale,
+      "region": regionselect,
+      "days": inputday,
+      "listDayStarts": listDS,
+      "listimgs": listI,
+      "listacts": listA,
+      "listbooks": [],
+      "cateId": cateselect
+      }
+
+    if (!inputname || !inputdescription || !inputcost || isNaN(inputcost) || !inputsale ||
+       !inputday || !inputlocationStart || regionselect=="0" || cateselect=="0"){
+      alert("Nhập chưa đủ thông tin!");
+    }
+    else{
+      $.ajax({
+        headers : {
+          'Accept' : 'application/json',
+          'Content-Type' : 'application/json',
+          'Authorization' : "Bearer "+getCookie("token")
+        },
+        type : "PUT",
+        url : "http://localhost:8081/data/tour/"+id,
+        data : JSON.stringify(tour),
+        success : function(){
+          alert("Thành công!");
+          window.location = 'http://localhost:8081/admin/tourDetail?id='+id;
+        },
+        error : function(){
+          alert("Thêm tour không thành công!");
+        }
+      });
+      console.log(tour);
+    }
+  }
+</script>
+</body>
+</html>

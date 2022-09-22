@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Danh sách Tour đã đặt</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/admin/plugins/fontawesome-free/css/all.min.css">
+  <!-- jsGrid -->
+  <link rel="stylesheet" href="/admin/plugins/jsgrid/jsgrid.min.css">
+  <link rel="stylesheet" href="/admin/plugins/jsgrid/jsgrid-theme.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/admin/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/index" class="brand-link">
+      <img src="/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Book awesome</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="info">
+          <a href="#" class="d-block"><strong style="margin-right: 12px;">User:</strong>Alexander Pierce</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="/userInfo" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                Thông tin tài khoản
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/userBooked" class="nav-link">
+              <i class="nav-icon fas fa-phone"></i>
+              <p>
+                Xem Tour đã đặt
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+
+      <p onclick="logout()" class="btn btn-block btn-warning" style="margin-top: 36px;">Đăng xuất</p>
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1>Danh sách Tour đã đặt</h1>
+              </div>
+            </div>
+          </div><!-- /.container-fluid -->
+        </section>
+    
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+    
+                <!-- Main content -->
+                <div class="invoice p-3 mb-3">
+    
+                  <!-- Table row -->
+                  <div class="row">
+                    <div class="col-12 table-responsive">
+                      <table class="table table-striped">
+                        <thead>
+                        <tr>
+                          <th style="width: 50px;">Mã Tour</th>
+                          <th style="width: 300px;">Tên Tour</th>
+                          <th style="width: 100px;">Ngày đặt</th>
+                          <th style="width: 100px;">Giá/khách</th>
+                          <th style="width: 50px;">Số khách</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- js-->
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                <!-- /.invoice -->
+              </div><!-- /.col -->
+            </div><!-- /.row -->
+          </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="/admin/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/admin/dist/js/adminlte.min.js"></script>
+<!-- jsGrid -->
+<script src="/admin/plugins/jsgrid/jsgrid.min.js"></script>
+<script src="/cookie.js"></script>
+
+<script>
+  window.onload = function(){
+      authenticate("ROLE_USER","");
+      document.querySelector(".d-block").innerHTML = 
+      `<strong style="margin-right: 12px;">Tài khoản:</strong>${getCookie("username")}`;
+      getBookedTourByUser();
+  };
+
+  function dateConvert2(date){
+      date = date.slice(0,10);
+      var a = date.split("-");
+      a.reverse();
+      return a.join("-");
+  }
+
+  const numberFormat = new Intl.NumberFormat('vi-VN', {
+      style: 'currency',
+      currency: 'VND',
+  });
+
+  function getBookedTourByUser(){
+    $.ajax({
+      headers : {
+          'Accept' : 'application/json',
+          'Content-Type' : 'application/json',
+          'Authorization' : "Bearer "+getCookie("token")
+        },
+      type : "GET",
+      url : "http://localhost:8081/data/secure/listbooktourbyusername?username="+getCookie("username"),
+      success: function(result){
+        result.forEach(element => {
+          var datebook = dateConvert2(element.bookdate);
+          var sl = element.quantity;
+          var t_id = element.tourId;
+          $.ajax({
+            headers : {
+                'Accept' : 'application/json',
+                'Content-Type' : 'application/json',
+                'Authorization' : "Bearer "+getCookie("token")
+            },
+            type : "GET",
+            url : "http://localhost:8081/data/tour/"+t_id,
+            success: function(tour){
+              var e = document.createElement('tr');
+              let content = `<td style="width: 50px;">${tour.tourId}</td>
+                          <td style="width: 300px;">${tour.tourName}</td>
+                          <td style="width: 100px;">${datebook}</td>
+                          <td style="width: 100px;">${numberFormat.format(tour.tourCost)}</td>
+                          <td style="width: 50px;">${sl}</td>`;
+              e.innerHTML = content;
+              document.querySelector(".table-responsive .table-striped tbody").appendChild(e);
+            }
+          })
+        });
+      }
+    })
+  }
+</script>
+</body>
+</html>

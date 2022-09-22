@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<!--[if IE 7 ]> <html class="ie ie7"> <![endif]-->
+<!--[if IE 8 ]> <html class="ie ie8"> <![endif]-->
+<!--[if IE 9 ]> <html class="ie ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+
+<!-- Mirrored from envato.megadrupal.com/html/bookawesome/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Aug 2015 04:44:16 GMT -->
+<head>
+    <meta charset="utf-8">
+    <title>Trang chủ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Font Google -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400%7COpen+Sans:300,400,600' rel='stylesheet' type='text/css'>
+    <!-- End Font Google -->
+    <!-- Library CSS -->
+    <link rel="stylesheet" href="/views/css/library/font-awesome.min.css">
+    <link rel="stylesheet" href="/views/css/library/bootstrap.min.css">
+    <link rel="stylesheet" href="/views/css/library/jquery-ui.min.css">
+    <link rel="stylesheet" href="/views/css/library/owl.carousel.css">
+    <!-- End Library CSS -->
+    <link rel="stylesheet" href="/views/css/style.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="tb-cell">
+            <div id="page-loading">
+                <div></div>
+                <p>Loading</p>
+            </div>
+        </div>
+    </div>
+    <!-- Wrap -->
+
+    <div id="wrap">
+
+        <!-- Header -->
+        <header id="header" class="header">
+            <div class="container">
+                <!-- Logo -->
+                <div class="logo float-left">
+                    <a href="/index" title=""><img src="/views/images/logo-header.png" alt=""></a>
+                </div>
+                <!-- End Logo -->
+                <!-- Bars -->
+                <div class="bars" id="bars"></div>
+                <!-- End Bars -->
+
+                <!--Navigation-->
+                <nav class="navigation nav-c" id="navigation" data-menu-type="1200">
+                    <div class="nav-inner">
+                        <a href="#" class="bars-close" id="bars-close">Close</a>
+                        <div class="tb">
+                            <div class="tb-cell">
+                                <ul class="menu-list text-uppercase">
+                                    <li class="current-menu-parent">
+                                        <a href="/index" title="">Trang chủ</a>
+                                    </li>
+                                    <li>
+                                        <a href="/tour_list">Tour du lịch</a>
+                                    </li>
+                                    <li class="no-account">
+                                        <a href="/login" title="" >Đăng nhập</a>
+                                    </li>
+                                    <li class="has-account" style="display: none;">
+                                        <a href="/userInfo" title="" >Tài khoản</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <!--End Navigation-->
+            </div>
+        </header>
+        <!-- End Header -->
+
+        
+
+        <!--Banner-->
+        <section class="banner">
+
+            <!--Background-->
+            <div class="bg-parallax bg-11"></div>
+            <!--End Background-->
+
+            <div class="container">
+
+                <div class="logo-banner text-center">
+                    <a href="#" title="">
+                        <img src="/views/images/logo-banner.png" alt="">
+                    </a>
+                </div>
+            </div>
+
+        </section>
+        <!--End Banner-->
+
+        <!-- Sales -->
+        <section class="sales">
+            <!-- Title -->
+            <div class="title-wrap">
+                <div class="container">
+                    <div class="travel-title float-left">
+                        <h2>Hot Sales:</h2>
+                    </div>
+                    <a href="/tour_list" title="" class="awe-btn awe-btn-5 awe-btn-lager arrow-right text-uppercase float-right">xem thêm</a>
+                </div>
+            </div>
+            <!-- End Title -->
+            <!-- Hot Sales Content -->
+            <div class="container">
+                <div class="sales-cn">
+                    <div class="row">
+                        <!-- *****HostSales Item json***** -->
+                    </div>
+                </div>
+            </div>
+            <!-- End Hot Sales Content -->
+        </section>
+        <!-- End Sales -->
+
+        <!-- Travel Destinations -->
+        <section class="destinations">
+
+            <!-- Title -->
+            <div class="title-wrap">
+                <div class="container">
+                    <div class="travel-title float-left">
+                        <h2>Du lịch 3 miền: </h2>
+                    </div>
+                    <a href="/tour_list" title="" class="awe-btn awe-btn-5 arrow-right awe-btn-lager text-uppercase float-right">xem thêm</a>
+                </div>
+            </div>
+            <!-- End Title -->
+
+            <!-- Destinations Content -->
+            <div class="destinations-cn">
+
+                <!-- Background -->
+                <div class="bg-parallax bg-2"></div>
+                <!-- End Background -->
+
+                <div class="container">
+                    <div class="row">
+                        <!-- Destinations Filter -->
+                        <div class="col-md-4 col-lg-3">
+                            <div class="intro-filter">
+                                <ul class="filter">
+                                    <li class="active">
+                                        <a class="auto-click" data-toggle="tab" href="#destinations-1" onclick="getbyregion('Miền Bắc')"><i class="fa fa-map-marker"></i>Miền Bắc</a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="#destinations-1" onclick="getbyregion('Miền Trung')"><i class="fa fa-map-marker"></i>Miền Trung</a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="#destinations-1" onclick="getbyregion('Miền Nam')"><i class="fa fa-map-marker"></i>Miền Nam</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <!-- End Destinations Filter -->
+                        <!-- Destinations Grid -->
+                        <div class="col-md-8 col-lg-9">
+                            <div class="tab-content destinations-grid">
+                                <!-- Tab One -->
+                                <div id="destinations-1" class="clearfix tab-pane fade active in ">
+                                    <!-- *****Tour theo miền***** -->
+                                </div>
+                                <!-- End Tab One -->
+                            </div>
+                        </div>
+                        <!-- ENd Destinations Grid -->
+                    </div>
+                </div>
+            </div>
+            <!-- End Destinations Content -->
+        </section>
+        <!-- End Travel Destinations -->
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <!-- Logo -->
+                    <div class="col-md-4">
+                        <div class="logo-foter">
+                            <a href="/index" title=""><img src="/views/images/logo-footer.png" alt=""></a>
+                        </div>
+                    </div>
+                    <!-- End Logo -->
+                    <!-- Navigation Footer -->
+                    <div class="col-xs-6 col-sm-3 col-md-2">
+                        <div class="ul-ft text-center">
+                            <ul>
+                                <li><a href="#" title="">Liên hệ</a></li>
+                                <li><a href="#" title="">Về Book awesome</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End Navigation Footer -->
+                    <!-- Navigation Footer -->
+                    <div class="col-xs-6 col-sm-3 col-md-2">
+                        <div class="ul-ft text-center">
+                            <ul>
+                                <li><a href="#" title="">Điều khoản</a></li>
+                                <li><a href="#" title="">Chính sách</a></li>
+                                <li><a href="#" title="">Đối tác</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End Navigation Footer -->
+                    <!-- Follow us -->
+                    <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="follow-us">
+                            <h4>Follow us</h4>
+                            <div class="follow-group">
+                                <a href="#" title=""><i class="fa fa-facebook"></i></a>
+                                <a href="#" title=""><i class="fa fa-twitter"></i></a>
+                                <a href="#" title=""><i class="fa fa-instagram"></i></a>
+                                <a href="#" title=""><i class="fa fa-youtube-play"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Follow us -->
+                </div>
+            </div>
+        </footer>
+        <!-- End Footer -->
+        
+    </div>
+    
+    <!-- Get data -->
+    <script type="text/javascript" src = "/views/js/views/index.js"></script>
+    
+    <!-- Library JS -->
+    <script type="text/javascript" src="/views/js/library/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="/views/js/library/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/views/js/library/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/views/js/library/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/views/js/library/parallax.min.js"></script>
+    <script type="text/javascript" src="/views/js/library/jquery.nicescroll.js"></script>
+    <script type="text/javascript" src="/views/js/library/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="/views/js/library/SmoothScroll.js"></script>
+    <!-- End Library JS -->
+    <!-- Main Js -->
+    <script type="text/javascript" src="/views/js/script.js"></script>
+    <!-- End Main Js -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','../../../www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-20585382-5', 'megadrupal.com');
+        ga('send', 'pageview');
+    </script>
+    <script src="/cookie.js"></script>
+</body>
+
+<!-- Mirrored from envato.megadrupal.com/html/bookawesome/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 05 Aug 2015 04:45:25 GMT -->
+</html>

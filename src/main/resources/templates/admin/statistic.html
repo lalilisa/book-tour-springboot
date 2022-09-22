@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thống kê</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/admin/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- jsGrid -->
+  <link rel="stylesheet" href="/admin/plugins/jsgrid/jsgrid.min.css">
+  <link rel="stylesheet" href="/admin/plugins/jsgrid/jsgrid-theme.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/admin/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/index" class="brand-link">
+      <img src="/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Book awesome</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="info">
+          <a href="/admin/adminInfo" class="d-block"><strong style="margin-right: 12px;">Admin:</strong>Alexander Pierce</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="/admin/statistic" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Thống kê
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Quản lý tài khoản
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/admin/user" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Người dùng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/admin" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Admin</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/adminInfo" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Cá nhân</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-suitcase"></i>
+              <p>
+                Quản lý Tour
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/admin/listTour" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách Tour</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/listBookTour" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Book Tour</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+
+      <p onclick="logout()" class="btn btn-block btn-warning" style="margin-top: 36px;">Đăng xuất</p>
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Thống kê</h1>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+  
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                  <!-- small box -->
+                  <div class="small-box bg-info">
+                    <div class="inner">
+                      <h3 class="statistic-booktour">150</h3>
+      
+                      <p>Yêu cầu đặt Tour</p>
+                    </div>
+                    <div class="icon">
+                      <i class="ion ion-bag"></i>
+                    </div>
+                  </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                  <!-- small box -->
+                  <div class="small-box bg-success">
+                    <div class="inner">
+                      <h3 class="statistic-income">1.3</h3>
+      
+                      <p>Doanh thu</p>
+                    </div>
+                    <div class="icon">
+                      <i class="ion ion-stats-bars"></i>
+                    </div>
+                  </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                  <!-- small box -->
+                  <div class="small-box bg-warning">
+                    <div class="inner">
+                      <h3 class="statistic-user">44</h3>
+      
+                      <p>Người dùng</p>
+                    </div>
+                    <div class="icon">
+                      <i class="ion ion-person-add"></i>
+                    </div>
+                  </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                  <!-- small box -->
+                  <div class="small-box bg-danger">
+                    <div class="inner">
+                      <h3 class="statistic-tour">65</h3>
+      
+                      <p>Tổng số Tour</p>
+                    </div>
+                    <div class="icon">
+                      <i class="ion ion-android-plane"></i>
+                    </div>
+                  </div>
+                </div>
+                <!-- ./col -->
+              </div>
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="/admin/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/admin/dist/js/adminlte.min.js"></script>
+<!-- jsGrid -->
+<script src="/admin/plugins/jsgrid/jsgrid.min.js"></script>
+<script src="/cookie.js"></script>
+<script>
+  window.onload = function(){
+    authenticate("ROLE_ADMIN","");
+    document.querySelector(".d-block").innerHTML = 
+      `<strong style="margin-right: 12px;">Admin:</strong>${getCookie("username")}`;
+    statistic();
+  };
+
+  function formatincome(income){
+    if (income>=1000000000){
+      document.querySelector(".statistic-income").innerHTML = 
+      `${(income/1000000000).toFixed(2)} <sup style="font-size: 20px">tỉ VND</sup>`;
+      return;
+    }
+    if (income>=1000000){
+      document.querySelector(".statistic-income").innerHTML = 
+      `${(income/1000000).toFixed(2)} <sup style="font-size: 20px">triệu VND</sup>`;
+      return;
+    }
+    if (income>=1000){
+      document.querySelector(".statistic-income").innerHTML = 
+      `${(income/1000).toFixed(2)} <sup style="font-size: 20px">nghìn VND</sup>`;
+      return;
+    }
+    document.querySelector(".statistic-income").innerHTML = 
+      `${income} <sup style="font-size: 20px">VND</sup>`;
+  }
+
+  function statistic(){
+    $.ajax({
+      headers : {
+          'Accept' : 'application/json',
+          'Content-Type' : 'application/json',
+          'Authorization' : "Bearer "+getCookie("token")
+        },
+      type : "GET",
+      url : "http://localhost:8081/data/secure/statisticbooktour",
+      success: function(result){
+        document.querySelector(".statistic-booktour").innerHTML = result;
+      }
+    })
+    $.ajax({
+      headers : {
+          'Accept' : 'application/json',
+          'Content-Type' : 'application/json',
+          'Authorization' : "Bearer "+getCookie("token")
+        },
+      type : "GET",
+      url : "http://localhost:8081/data/secure/statisticincome",
+      success: function(result){
+        formatincome(result);
+      }
+    })
+    $.ajax({
+      headers : {
+          'Accept' : 'application/json',
+          'Content-Type' : 'application/json',
+          'Authorization' : "Bearer "+getCookie("token")
+        },
+      type : "GET",
+      url : "http://localhost:8081/data/secure/statisticusers",
+      success: function(result){
+        document.querySelector(".statistic-user").innerHTML = result;
+      }
+    })
+    $.ajax({
+      headers : {
+          'Accept' : 'application/json',
+          'Content-Type' : 'application/json',
+          'Authorization' : "Bearer "+getCookie("token")
+        },
+      type : "GET",
+      url : "http://localhost:8081/data/statistictour",
+      success: function(result){
+        document.querySelector(".statistic-tour").innerHTML = result;
+      }
+    })
+  }
+
+</script>
+
+</body>
+</html>

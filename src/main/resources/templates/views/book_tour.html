@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/views/css/book_tour.css">
+    <title>Đặt Tour</title>
+</head>
+<body>
+    <div class="modal__container">
+        <div class="modal__main">
+            <div class="modal__heading">
+                <h3 class="modal__title">Yêu cầu đặt Tour #<span></span></h3>
+                <p class="modal__instruct">Tên tour: "Tour Phú Yên 3N3D: Tháp Nghinh Phong - Vịnh Vũng Rô - Đảo Hòn Nưa"</p>   
+            </div>
+            <div class="content">
+                    <div class="field">
+                        <label class="control-label">Họ tên <span class="vcolor-danger">*</span></label>
+                        <input maxlength="255" readonly required type="text" class="form-control username" id="customerName" placeholder="">
+                    </div>
+                    <div class="field">
+                        <label class="control-label">Điện thoại <span class="vcolor-danger">*</span></label>
+                        <input required type="tel" pattern="[0-9]{10,11}" class="form-control phonenumber" id="customerPhone" value="" placeholder="">
+                    </div>
+                    <div class="field">
+                        <label class="control-label">Ngày khởi hành</label>
+                        <select name="" id="" class="form-control day-start">
+                            <option value="1">20-5-2022</option>
+                            <option value="1">03-6-2022</option>
+                            <option value="1">15-6-2022</option>
+                            <option value="1">28-6-2022</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label class="control-label">Số người<span class="vcolor-danger"></span></label>
+                        <input maxlength="100" required type="number" min="1" class="form-control number" id="customerEmail" placeholder="">
+                    </div>
+                    <div class="field">
+                        <label class="control-label">Hình thức thanh toán<span class="vcolor-danger"></span></label>
+                        <div class="how-to-pay">
+                            <input type="radio" checked  id="pay1" name="pay" value="Tại quầy Book awesome">
+                            <label>Tại quầy Book awesome</label>
+                        </div>
+                        <div class="how-to-pay">
+                            <input type="radio" id="pay2" name="pay" value="Ví MoMo">
+                            <label>Ví MoMo</label>
+                        </div>
+                        <div class="how-to-pay">
+                            <input type="radio" id="pay3" name="pay" value="Chuyển khoản ngân hàng">
+                            <label>Chuyển khoản ngân hàng</label>
+                        </div>
+                    </div>
+                    <div class="field-cost">
+                        <label class="control-label">Tổng giá:<span class="vcolor-danger"></span></label>
+                        <label class="control-label"><span class="return-cost"></span></label>
+                    </div>
+                    <div class="modal-footer">
+                        <input id="captchagg" type="submit" onclick="bookTour()" class="book-button" value="Đặt tour">
+                    </div>
+            </div>
+        </div>
+        <input type="number" class="cost_for_person" style="display: none;" value="3200000">
+
+        <a href="/index" class="return_home">Quay lại trang chủ</a>
+    </div>
+
+    <script src="/cookie.js"></script>
+    <script src="/admin/plugins/jquery/jquery.min.js"></script>
+
+    <script>
+        const numberFormat = new Intl.NumberFormat('vi-VN', {
+            style: 'currency',
+            currency: 'VND',
+        });
+
+        var num = document.querySelector(".number");
+        var cost = document.querySelector(".cost_for_person"); 
+        var book = document.querySelector(".book-button");
+        num.addEventListener("change", function filltotal(){
+            document.querySelector(".return-cost").innerHTML = numberFormat.format(totalcost());
+        })
+
+        function totalcost(){
+            return cost.value*num.value;
+        }
+
+        window.onload = function(){
+            authenticate("ROLE_USER","");
+            getInfoTour();
+        };
+
+        var curl = document.URL;
+        var id = curl.split('id=')[1];
+        function getInfoTour(){
+            $.ajax({
+                headers : {
+                    'Accept' : 'application/json',
+                    'Content-Type' : 'application/json',
+                    'Authorization' : getCookie("token")
+                },
+                type: "GET",
+                url: "http://localhost:8081/data/tour/"+id,
+                success: function(result){
+                    daystarts = ``;
+                    document.querySelector(".modal__title span").innerHTML = result.tourId;
+                    document.querySelector(".modal__instruct").innerHTML = `Tên tour: ${result.tourName}`;
+                    result.listDayStarts.forEach(element => {
+                        daystarts += `<option value="${dateConvert2(element.dayStart)}">${dateConvert2(element.dayStart)}</option>`;
+                    });
+                    document.querySelector(".day-start").innerHTML = daystarts;
+                    document.querySelector(".username").value = getCookie("username");
+                    cost.value = result.tourCost;
+                }
+            })
+            document.querySelector(".username").value = getCookie('name');
+        }
+
+        function dateConvert1(date){
+            var a = date.split("-");
+            a.reverse();
+            return a.join("-");
+        }
+
+        function dateConvert2(date){
+            date = date.slice(0,10);
+            var a = date.split("-");
+            a.reverse();
+            return a.join("-");
+        }
+
+        function checkInput(){
+            let a = document.querySelector(".username").value,
+                b = document.querySelector(".phonenumber").value,
+                c = document.querySelector(".number").value;
+            if (!a || !b || !c){
+                alert("Không để trống!");
+                return false;
+            }
+            else if(b.length!=10 && b.length!=11){
+                alert("Số điện thoại không hợp lệ!");
+                return false;
+            }
+            return true;
+        }
+
+        function bookTour(){
+            let b = document.querySelector(".day-start").value,
+                c = document.querySelector(".number").value,
+                d = document.querySelector('input[name="pay"]:checked').value,
+                e =  new Date().toISOString().slice(0,10);
+            if (checkInput()){
+                let dt = {
+                    "tourId": id,
+                    "usernameacc": getCookie("username"),
+                    "dayStart":dateConvert1(b),
+                    "quantity":c,
+                    "payment":d,
+                    "bookdate": e
+                }
+                $.ajax({
+                headers : {
+                    'Accept' : 'application/json',
+                    'Content-Type' : 'application/json',
+                    'Authorization' : "Bearer "+getCookie("token")
+                },
+                type : "POST",
+                url : "http://localhost:8081/data/secure/bookTour",
+                data: JSON.stringify(dt),
+                success: function(){
+                    alert("Đặt Tour thành công!");
+                }
+            })
+            }
+        }
+
+    </script>
+
+
+</body>
+</html>

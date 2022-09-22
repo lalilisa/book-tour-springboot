@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chi tiết Tour</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/admin/plugins/fontawesome-free/css/all.min.css">
+  <!-- jsGrid -->
+  <link rel="stylesheet" href="/admin/plugins/jsgrid/jsgrid.min.css">
+  <link rel="stylesheet" href="/admin/plugins/jsgrid/jsgrid-theme.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/admin/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/index" class="brand-link">
+      <img src="/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Book awesome</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="info">
+          <a href="/admin/adminInfo" class="d-block"><strong style="margin-right: 12px;">Admin:</strong>Alexander Pierce</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="statistic" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Thống kê
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Quản lý tài khoản
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/admin/user" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Người dùng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/admin" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Admin</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/adminInfo" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Cá nhân</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-suitcase"></i>
+              <p>
+                Quản lý Tour
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/admin/listTour" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách Tour</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/listBookTour" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Book Tour</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+
+      <p onclick="logout()" class="btn btn-block btn-warning" style="margin-top: 36px;">Đăng xuất</p>
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Thông tin Tour</h1>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="card card-solid">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-sm-6">
+              <h3 class="d-inline-block d-sm-none">LOWA Men’s Renegade GTX Mid Hiking Boots Review</h3>
+              <div class="col-12 product-image-main">
+                <!-- js -->
+              </div>
+              <div class="col-12 product-image-thumbs">
+                <!-- js -->
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 tour-info">
+              <!-- js -->
+              </div>
+
+              <div class="mt-4">
+                <a onclick="goToEdit()" class="btn btn-primary btn-lg btn-flat">
+                  <i class="fas fa-edit fa-lg mr-2"></i>
+                  Sửa thông tin
+                </a>
+
+                <a onclick="deleteTour()" class="btn btn-default btn-lg btn-flat">
+                  <i class="fas fa-trash fa-lg mr-2"></i>
+                  Xóa Tour
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <nav class="w-100">
+              <div class="nav nav-tabs" id="product-tab" role="tablist">
+                <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">Mô tả</a>
+                <a class="nav-item nav-link" id="product-rating-tab" data-toggle="tab" href="#product-rating" role="tab" aria-controls="product-rating" aria-selected="false">Ngày khởi hành</a>
+                <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="false">Lộ trình</a>
+            </div>
+            </nav>
+            <div class="tab-content p-3" id="nav-tabContent">
+                <div class="tab-pane fade show active tour-description" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab"></div>
+                <div class="tab-pane fade tour-date" id="product-rating" role="tabpanel" aria-labelledby="product-rating-tab">
+                    <ul>
+                        <!-- js -->
+                    </ul>
+                </div>
+                <div class="tab-pane fade tour-act" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab">
+                    <!-- js -->
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="/admin/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/admin/dist/js/adminlte.min.js"></script>
+<!-- jsGrid -->
+<script src="/admin/plugins/jsgrid/jsgrid.min.js"></script>
+<script src="/cookie.js"></script>
+<script>
+  window.onload=function(){
+    authenticate("ROLE_ADMIN","");
+    document.querySelector(".d-block").innerHTML = 
+      `<strong style="margin-right: 12px;">Admin:</strong>${getCookie("username")}`;
+  };
+
+  const numberFormat = new Intl.NumberFormat('vi-VN', {
+	style: 'currency',
+	currency: 'VND',
+  });
+
+  function dateConvert(date){
+    date = date.slice(0,10);
+    var a = date.split("-");
+    a.reverse();
+    return a.join("-");
+  }
+  
+  var curl = document.URL;
+  var id = curl.split('id=')[1];
+  
+  function goToEdit(){
+    window.location = 'http://localhost:8081/admin/editTour?id='+ id;
+  }
+
+  function deleteTour(){
+    if (confirm("Xóa Tour?")){
+      $.ajax({
+        headers : {
+          'Accept' : 'application/json',
+          'Content-Type' : 'application/json',
+          'Authorization' : "Bearer "+getCookie("token")
+        },
+        type : "DELETE",
+        url : "http://localhost:8081/data/tour/"+id,
+        success : function(){
+          alert("Thành công!");
+          window.location = 'http://localhost:8081/admin/listTour';
+        },
+        error : function(){
+          alert("Xóa không thành công!");
+        }
+      });
+    }
+  }
+
+  fetch("http://localhost:8081/data/tour/"+id, {
+      method: "GET"
+  }).then(function(response) {
+      return response.json();
+  }).then(function(tour) {
+      console.log(tour);
+      var slideimg=``;
+      var listimg=tour.listimgs;
+      document.querySelector(".product-image-main").innerHTML = `<img src="${listimg[0].url}" class="product-image" alt="Product Image">`;
+      for( var i=0 ; i<listimg.length ; i++) {
+          if (i==0){
+            slideimg += `<div class="product-image-thumb active" ><img src="${listimg[i].url}" alt="Product Image"></div>`
+          }
+          else{
+            slideimg += `<div class="product-image-thumb" ><img src="${listimg[i].url}" alt="Product Image"></div>`
+          }
+      };
+      var info1 = `<h3 class="my-3" style="font-style: italic; color: rgb(151, 92, 3); font-weight: 600;">${tour.tourName}</h3>
+                  <hr>
+                  <h4>Mã Tour: <strong>${tour.tourId}</strong></h4>
+                  <h4>Số ngày: <strong>${tour.days}</strong></h4>
+                  <h4>Khu vực: <strong>${tour.region}</strong></h4>
+                  <h4>Nơi khởi hành: <strong>${tour.startLoc}</strong></h4>
+                  <h4>Loại Tour: <strong class="type-tour"></strong></h4>
+                  <div class="bg-gray py-2 px-3 mt-4">
+                    <h2 class="mb-0">
+                        Giá bán: ${numberFormat.format(tour.tourCost)}
+                    </h2>
+                    <h4 class="mt-0">
+                      <small>Sale: ${tour.sale}% </small>
+                    </h4>
+                    <h4 class="mt-0">
+                      <small>Giá gốc: ${numberFormat.format(tour.tourCost + tour.tourCost*tour.sale/100)} </small>
+                    </h4>`;
+      var actlist=``;
+      tour.listacts.forEach(element => {
+          actlist += `<strong>Ngày ${element.day}: ${element.title}</strong>
+                      <p>${element.act}</p>`
+      });
+      var daylist=``;
+      tour.listDayStarts.forEach(element => {
+          daylist += `<li>${dateConvert(element.dayStart)}</li>`
+      });
+      document.querySelector(".product-image-thumbs").innerHTML = slideimg;
+      document.querySelector(".tour-info").innerHTML = info1;
+      document.querySelector(".tour-description").innerHTML = `${tour.tourDescription}`;
+      document.querySelector(".tour-act").innerHTML = actlist;
+      document.querySelector(".tour-date ul").innerHTML = daylist;
+      return tour.cateId;
+  }).then(function(cateId) {
+    $(document).ready(function() {
+    $('.product-image-thumb').on('click', function () {
+      var $image_element = $(this).find('img')
+      $('.product-image').prop('src', $image_element.attr('src'))
+      $('.product-image-thumb.active').removeClass('active')
+      $(this).addClass('active')
+    })
+    })
+    fetch("http://localhost:8081/data/categoryid?id="+cateId, {
+                        method: "GET"
+                    }).then(function(response) {
+                      return response.json();
+                    }).then(function(category) {
+                      document.querySelector(".type-tour").innerHTML = category.cateName;
+                    })
+  });  
+</script>
+</body>
+</html>

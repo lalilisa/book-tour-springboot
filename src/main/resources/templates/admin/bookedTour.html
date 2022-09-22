@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chi tiết đặt Tour</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/admin/plugins/fontawesome-free/css/all.min.css">
+  <!-- jsGrid -->
+  <link rel="stylesheet" href="/admin/plugins/jsgrid/jsgrid.min.css">
+  <link rel="stylesheet" href="/admin/plugins/jsgrid/jsgrid-theme.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/admin/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/index" class="brand-link">
+      <img src="/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Book awesome</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="info">
+          <a href="/admin/adminInfo" class="d-block"><strong style="margin-right: 12px;">Admin:</strong>Alexander Pierce</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="/admin/statistic" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Thống kê
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Quản lý tài khoản
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/admin/user" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Người dùng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/admin" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Admin</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/adminInfo" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Cá nhân</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-suitcase"></i>
+              <p>
+                Quản lý Tour
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/admin/listTour" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách Tour</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/listBookTour" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Book Tour</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+
+      <button type="button" class="btn btn-block btn-warning" style="margin-top: 36px;">Đăng xuất</button>
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Chi tiết đặt Tour</h1>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+  
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+  
+              <!-- Main content -->
+              <div class="invoice p-3 mb-3">
+                <!-- title row -->
+                <div class="row">
+                  <div class="col-12">
+                    <h4>
+                      <i class="fas fa-globe"></i> Book awesome
+                    </h4>
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- info row -->
+                <div class="row invoice-info">
+                  <div class="col-sm-4 invoice-col">
+                    <address>
+                      Tài khoản: <strong>Admin, Inc.</strong><br>
+                      Mã tài khoản: 1<br>
+                      Họ tên: Nguyễn Văn A<br>
+                      Email: abc@gmail.com
+                    </address>
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-sm-4 invoice-col info-book-tour">
+                    <b>Mã đơn: #1</b><br>
+                    <b>Ngày đặt:</b> 28-03-2022<br>
+                    <b>Ngày khởi hành:</b> 20-04-2022<br>
+                    <b>Hình thức thanh toán:</b> Chuyển khoản ngân hàng<br>
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+  
+                <!-- Table row -->
+                <div class="row">
+                  <div class="col-12 table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                      <tr>
+                        <th>Mã Tour</th>
+                        <th>Tên Tour</th>
+                        <th>Số ngày</th>
+                        <th>Nơi khởi hành</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                        <td class="id_tour">1</td>
+                        <td class="name_tour">Du lịch Hà Nội - Chùa Tam Chúc - Ninh Bình - Tuyệt Tình Cốc - Chùa Bái Đính - Tràng An từ Sài Gòn</td>
+                        <td class="day_tour">3</td>
+                        <td class="startAt_tour">Tp Hồ Chí Minh</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+  
+                <div class="row">
+                  <!-- accepted payments column -->
+                  <div class="col-6">
+                    <p class="lead">Thanh toán</p>
+  
+                    <div class="table-responsive">
+                      <table class="table">
+                        <tr>
+                          <th style="width:50%">Giá:</th>
+                          <td class="costnotsale_tour">6750000</td>
+                        </tr>
+                        <tr>
+                          <th>Sale</th>
+                          <td class="sale_tour">5%</td>
+                        </tr>
+                        <tr>
+                          <th>Số khách:</th>
+                          <td class="quantity">2</td>
+                        </tr>
+                        <tr>
+                          <th>Tổng:</th>
+                          <td class="total-cost">12500000</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+              <!-- /.invoice -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="/admin/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/admin/dist/js/adminlte.min.js"></script>
+<!-- jsGrid -->
+<script src="/admin/plugins/jsgrid/jsgrid.min.js"></script>
+<script src="/cookie.js"></script>
+
+<script>
+  window.onload = function(){
+      authenticate("ROLE_ADMIN","");
+      document.querySelector(".d-block").innerHTML = 
+      `<strong style="margin-right: 12px;">Admin:</strong>${getCookie("username")}`;
+  
+      var curl = document.URL;
+      var id = curl.split('id=')[1];
+      getBookTourById(id);
+  };
+
+  function dateConvert2(date){
+      date = date.slice(0,10);
+      var a = date.split("-");
+      a.reverse();
+      return a.join("-");
+  }
+
+  const numberFormat = new Intl.NumberFormat('vi-VN', {
+      style: 'currency',
+      currency: 'VND',
+  });
+
+  function getAccByUsername(user){
+    $.ajax({
+      headers : {
+          'Accept' : 'application/json',
+          'Content-Type' : 'application/json',
+          'Authorization' : "Bearer "+getCookie("token")
+        },
+      type : "GET",
+      url : "http://localhost:8081/data/secure/getaccbyusername?username="+user,
+      success: function(result){
+        document.querySelector('.invoice-info .invoice-col address').innerHTML = 
+          `Tài khoản: <strong>${result.userName}</strong><br>
+          Mã tài khoản: ${result.accId}<br>
+          Họ tên: ${result.name?result.name:''}<br>
+          Email: ${result.email}`;
+      }
+    })
+  }
+
+  function getBookTourById(id){
+    $.ajax({
+      headers : {
+          'Accept' : 'application/json',
+          'Content-Type' : 'application/json',
+          'Authorization' : "Bearer "+getCookie("token")
+        },
+      type : "GET",
+      url : "http://localhost:8081/data/secure/booktour/"+id,
+      success: function(bt){
+        document.querySelector('.info-book-tour').innerHTML = `<b>Mã đơn: #${bt.bookId}</b><br>
+                    <b>Ngày đặt:</b> ${dateConvert2(bt.bookdate)}<br>
+                    <b>Ngày khởi hành:</b> ${dateConvert2(bt.dayStart)}<br>
+                    <b>Hình thức thanh toán:</b> ${bt.payment}<br>`;
+        getAccByUsername(bt.usernameacc);
+        var sl = bt.quantity;
+        var t_id = bt.tourId;
+        $.ajax({
+          headers : {
+              'Accept' : 'application/json',
+              'Content-Type' : 'application/json',
+              'Authorization' : "Bearer "+getCookie("token")
+            },
+          type : "GET",
+          url : "http://localhost:8081/data/tour/"+t_id,
+          success: function(result){
+            document.querySelector('.id_tour').innerHTML = result.tourId;
+            document.querySelector('.name_tour').innerHTML = result.tourName;
+            document.querySelector('.day_tour').innerHTML = result.days;
+            document.querySelector('.startAt_tour').innerHTML = result.startLoc;
+            document.querySelector('.costnotsale_tour').innerHTML = numberFormat.format(result.tourCost + result.tourCost*result.sale/100);
+            document.querySelector('.sale_tour').innerHTML = result.sale+"%";
+            document.querySelector('.quantity').innerHTML = sl;
+            document.querySelector('.total-cost').innerHTML = numberFormat.format(result.tourCost * sl);
+          }
+        })
+      }
+    })
+  }
+</script>
+
+</body>
+</html>

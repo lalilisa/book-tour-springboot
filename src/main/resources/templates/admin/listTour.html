@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Danh sách Tour</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/admin/plugins/fontawesome-free/css/all.min.css">
+  <!-- jsGrid -->
+  <link rel="stylesheet" href="/admin/plugins/jsgrid/jsgrid.min.css">
+  <link rel="stylesheet" href="/admin/plugins/jsgrid/jsgrid-theme.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/admin/dist/css/adminlte.min.css">
+  <style>
+    .jsgrid-pager-page:hover{
+      color: blue;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="hold-transition sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/index" class="brand-link">
+      <img src="/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Book awesome</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="info">
+          <a href="/admin/adminInfo" class="d-block"><strong style="margin-right: 12px;">Admin:</strong>Alexander Pierce</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="/admin/statistic" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Thống kê
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Quản lý tài khoản
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/admin/user" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Người dùng</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/admin" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Admin</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/adminInfo" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Cá nhân</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-suitcase"></i>
+              <p>
+                Quản lý Tour
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/admin/listTour" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Danh sách Tour</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/listBookTour" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Book Tour</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+
+      <p onclick="logout()" class="btn btn-block btn-warning" style="margin-top: 36px;">Đăng xuất</p>
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Danh sách Tour</h1>
+            </div>
+            <div class="col-sm-6">
+              <div class="input-group">
+                <input type="search" class="form-control input-search form-control-lg" placeholder="Tìm kiếm">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-lg btn-default" onclick="searchbykey()">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+            </div>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+  
+      <!-- Main content -->
+      <section class="content">
+        <div class="card">
+          <div class="card-header">
+            <div class="col-sm-3">
+              <a href="/admin/addTour" type="button" class="btn btn-block bg-gradient-success">
+                <i class="fa fa-plus" style="margin-right: 8px;"></i>
+                Thêm Tour mới
+              </a>
+            </div>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div id="jsGrid1" class="jsgrid" style="position: relative; height: 100%; width: 100%;">
+              <div class="jsgrid-grid-header jsgrid-header-scrollbar">
+                <table class="jsgrid-table">
+                  <tr class="jsgrid-header-row">
+                    <th class="jsgrid-header-cell jsgrid-align-center" style="width: 50px;">Mã Tour</th>
+                    <th class="jsgrid-header-cell jsgrid-align-center" style="width: 250px;">Tên Tour</th>
+                    <th class="jsgrid-header-cell jsgrid-align-center" style="width: 50px;">Số ngày</th>
+                    <th class="jsgrid-header-cell jsgrid-align-center" style="width: 100px;">Giá</th>
+                    <th class="jsgrid-header-cell jsgrid-align-center" style="width: 70px;"></th>
+                  </tr>
+                </table>
+              </div>
+              <div class="jsgrid-grid-body">
+                <table class="jsgrid-table">
+                  <tbody>
+                    <!-- js -->
+                  </table>
+                </div>
+                <div class="jsgrid-pager-container">
+                  <div class="jsgrid-pager">
+                    <!-- js -->
+                  </div>
+                </div>
+              </div>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="/admin/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/admin/dist/js/adminlte.min.js"></script>
+<!-- jsGrid -->
+<script src="/admin/plugins/jsgrid/jsgrid.min.js"></script>
+<script src="/cookie.js"></script>
+<script>
+
+  window.onload=function(){
+    authenticate("ROLE_ADMIN","");
+    document.querySelector(".d-block").innerHTML = 
+      `<strong style="margin-right: 12px;">Admin:</strong>${getCookie("username")}`;
+    gettourlist(0);
+  };
+
+  function searchbykey(){
+    var key = document.querySelector(".input-search").value;
+    var url = "http://localhost:8081/data/searchtour?key="+key;
+    fetch(url, {
+      method: "GET"
+    }).then(function(response) {
+      return response.json();
+    }).then(function(listtour) {
+      console.log(listtour);
+      var content=``;
+      var data = listtour;
+      data.forEach(element => {
+      content += `<tr class="jsgrid-row">
+                      <td class="jsgrid-cell jsgrid-align-center" style="width: 50px;">${element.tourId}</td>
+                      <td class="jsgrid-cell" style="width: 250px;">${element.tourName}</td>
+                      <td class="jsgrid-cell jsgrid-align-right" style="width: 50px;">${element.days}</td>
+                      <td class="jsgrid-cell jsgrid-align-right" style="width: 100px;">${element.tourCost}</td>
+                      <td class="jsgrid-cell jsgrid-align-center" style="width: 70px;">
+                        <a href="/admin/tourDetail?id=${element.tourId}"><button type="button" class="btn btn-block bg-gradient-info">Xem chi tiết</button></a></td>
+                    </tr>`
+      });
+      document.querySelector(".jsgrid-grid-body .jsgrid-table tbody").innerHTML = content;
+      document.querySelector(".jsgrid-pager-container .jsgrid-pager").innerHTML = ``;
+    });
+  }
+
+  function gettourlist(pagenum=0){
+    var url = "http://localhost:8081/data/pagetour?page="+pagenum;
+    fetch(url, {
+      method: "GET"
+    }).then(function(response) {
+      return response.json();
+    }).then(function(listtour) {
+      console.log(listtour);
+      var content=``;
+      var data = listtour.content;
+      data.forEach(element => {
+      content += `<tr class="jsgrid-row">
+                      <td class="jsgrid-cell jsgrid-align-center" style="width: 50px;">${element.tourId}</td>
+                      <td class="jsgrid-cell" style="width: 250px;">${element.tourName}</td>
+                      <td class="jsgrid-cell jsgrid-align-right" style="width: 50px;">${element.days}</td>
+                      <td class="jsgrid-cell jsgrid-align-right" style="width: 100px;">${element.tourCost}</td>
+                      <td class="jsgrid-cell jsgrid-align-center" style="width: 70px;">
+                        <a href="/admin/tourDetail?id=${element.tourId}"><button type="button" class="btn btn-block bg-gradient-info">Xem chi tiết</button></a></td>
+                    </tr>`
+      });
+      document.querySelector(".jsgrid-grid-body .jsgrid-table tbody").innerHTML = content;
+      var pagenavigation = `<p>Trang: ${listtour.number+1} / ${listtour.totalPages}</p>
+                            <span class="jsgrid-pager-page" onclick="gettourlist(${0})">Đầu</span>
+                            <span class="jsgrid-pager-page" onclick="gettourlist(${listtour.totalPages-1})">Cuối</span>`;
+      var start = listtour.number-2>0?listtour.number-2:0;
+      var end = start+5<=listtour.totalPages?start+5:listtour.totalPages;
+      for (var i=start ; i<end ; i++){
+        if (i==listtour.number){
+          pagenavigation+=`<span class="jsgrid-pager-page jsgrid-pager-current-page" onclick="gettourlist(${i})">${i+1}</span>`
+        }
+        else{
+          pagenavigation+=`<span class="jsgrid-pager-page" onclick="gettourlist(${i})">${i+1}</span>`
+        }
+      }
+      document.querySelector(".jsgrid-pager-container .jsgrid-pager").innerHTML = pagenavigation;
+    });
+  }
+</script>
+</body>
+</html>
