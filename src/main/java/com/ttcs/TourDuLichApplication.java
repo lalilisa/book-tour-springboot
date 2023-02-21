@@ -22,11 +22,14 @@ public class TourDuLichApplication {
 	@Bean
 	CommandLineRunner init(AccountRepository accountRepository) {
 		return (args) -> {
-			Account admin=new Account();
-			admin.setUserName("trimai");
-			admin.setEmail("maivantri309@gmail.com");
-			admin.setPassword((bCryptPasswordEncoder.encode("123")));
-			accountRepository.save(admin);
+				Account a=accountRepository.getAccByUsername("trimai");
+				if(a==null){
+				Account admin=new Account();
+				admin.setUserName("trimai");
+				admin.setEmail("maivantri309@gmail.com");
+				admin.setPassword((bCryptPasswordEncoder.encode("123")));
+				accountRepository.save(admin);
+			}
 		};
 	}
 }
