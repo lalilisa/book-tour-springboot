@@ -25,7 +25,7 @@ public class Category implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int cateId;
-	@Column(columnDefinition = "nvarchar(200) not null")
+	@Column()
 	private String cateName;
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
 	private List<Tour> tours;

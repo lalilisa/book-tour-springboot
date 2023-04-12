@@ -338,7 +338,7 @@
     success: function(data){
       let content = `<option selected disabled value="0">Loại Tour</option>`;
       data.forEach(element => {
-        if (element.cateId!=1){
+        if (element.cateId!=0){
           content += `<option value="${element.cateId}">${element.cateName}</option>`;
         }
       });

@@ -35,7 +35,7 @@ public class BookTour implements Serializable{
 	private Date dayStart;
 	@Column(nullable = false)
 	private int quantity;
-	@Column(columnDefinition = "nvarchar(500) not null")
+	@Column()
 	private String payment;
 	@Column(nullable = false)
 	private Date datebook;

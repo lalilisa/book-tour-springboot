@@ -30,9 +30,9 @@ public class Activity implements Serializable{
 	@Id
 	@Column(nullable = false)
 	private int day;
-	@Column(columnDefinition = "nvarchar(1000)")
+	@Column()
 	private String title;
-	@Column(columnDefinition = "ntext not null")
+	@Column()
 	private String act;
 	
 }

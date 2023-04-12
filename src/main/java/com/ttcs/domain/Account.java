@@ -29,13 +29,13 @@ public class Account implements Serializable{
 	private String userName;
 	@Column(length=255, nullable=false)
 	private String password;
-	@Column(columnDefinition = "nvarchar(100)")
+	@Column()
 	private String name;
 	@Column(length = 100)
 	private String email;
 	@Column(nullable = false)
 	private int role;
-	@Column(columnDefinition = "varchar(1000)")
+	@Column()
 	private String avata;
 	@OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
 	private List<BookTour> listbooks;

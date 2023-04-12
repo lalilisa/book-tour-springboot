@@ -75,14 +75,10 @@
           type : "GET",
           url : "http://localhost:8081/forgot?username="+u+"&email="+t,
           success: function(result){
-            if (result=="Fail"){
-              alert("Tài khoản hoặc Email không đúng!")
-            }
-            if (result=="Success"){
-              alert("Vui lòng kiểm tra email!")
-            }
+          //alert("Vui lòng check email")
           }
         })
+      alert("Vui lòng check email")
     }
 </script>
 </body>

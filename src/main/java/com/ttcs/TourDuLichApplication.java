@@ -22,7 +22,7 @@ public class TourDuLichApplication {
 	@Bean
 	CommandLineRunner init(AccountRepository accountRepository) {
 		return (args) -> {
-				Account a=accountRepository.getAccByUsername("trimai");
+				Account a=accountRepository.findByUserName("trimai");
 				if(a==null){
 				Account admin=new Account();
 				admin.setUserName("trimai");

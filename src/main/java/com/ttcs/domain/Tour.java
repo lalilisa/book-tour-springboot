@@ -28,17 +28,17 @@ public class Tour implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int tourId;
-	@Column(columnDefinition = "nvarchar(500) not null")
+	@Column()
 	private String tourName;
 	@Column(nullable = false)
 	private Long tourCost;
-	@Column(columnDefinition = "ntext not null")
+	@Column()
 	private String tourDescription;
-	@Column(columnDefinition = "nvarchar(100) not null")
+	@Column()
 	private String startLoc;
 	@Column(nullable = false)
 	private int sale;
-	@Column(columnDefinition = "nvarchar(50) not null")
+	@Column()
 	private String region;
 	@Column(nullable = false)
 	private int days;
